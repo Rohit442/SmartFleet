@@ -1,7 +1,6 @@
 import { useNavigation } from "@react-navigation/core";
 import React, { useEffect, useState } from "react";
 import {
-  KeyboardAvoidingView,
   TextInput,
   View,
   StyleSheet,
@@ -38,7 +37,7 @@ function LogInScreen() {
   };
 
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="padding">
+    <View style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="email"
@@ -60,7 +59,7 @@ function LogInScreen() {
           <Text style={styles.buttonText}>Log in</Text>
         </TouchableOpacity>
       </View>
-    </KeyboardAvoidingView>
+    </View>
   );
 }
 
