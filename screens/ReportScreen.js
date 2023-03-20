@@ -40,13 +40,13 @@ const ReportScreen = ({ navigation }) => {
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Log in")}
+          onPress={() => navigation.navigate("Driver Log in")}
           style={styles.logInButton}
         >
           <Text style={styles.buttonText}>Driver Log in</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Log in")}
+          onPress={() => navigation.navigate("Staff Log in")}
           style={styles.logInButton}
         >
           <Text style={styles.buttonText}>Staff Log in</Text>
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     backgroundColor: "#00008B",
-    padding: 20,
+    padding: 5,
     bottom: 0,
     position: "absolute",
     width: width,

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "nav-app",
-    "slug": "nav-app",
+    "name": "SmartFleet",
+    "slug": "SmartFleet",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

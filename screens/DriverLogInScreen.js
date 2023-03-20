@@ -10,7 +10,7 @@ import {
 
 import { auth } from "../firebase";
 
-function LogInScreen() {
+function DriverLogInScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,7 +19,7 @@ function LogInScreen() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        navigation.replace("Worker Dashboard");
+        navigation.replace("Driver Dashboard");
       }
     });
 
@@ -99,4 +99,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LogInScreen;
+export default DriverLogInScreen;

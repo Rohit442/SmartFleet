@@ -3,14 +3,14 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { auth } from "../firebase";
 
-const HomeScreen = () => {
+const StaffDashboard = () => {
   const navigation = useNavigation();
 
   const handleSignOut = () => {
     auth
       .signOut()
       .then(() => {
-        navigation.replace("Log in");
+        navigation.replace("Staff Log in");
       })
       .catch((error) => alert(error.message));
   };
@@ -25,7 +25,7 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default StaffDashboard;
 
 const styles = StyleSheet.create({
   container: {

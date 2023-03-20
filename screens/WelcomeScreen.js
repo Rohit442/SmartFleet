@@ -1,47 +1,63 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   View,
-  Text,
-  Image,
-  ImageBackground,
   StyleSheet,
-  TouchableHighlight,
+  Animated,
+  ImageBackground,
+  Image,
 } from "react-native";
-const bg = require("first-app/assets/Wp.png");
-const logo = require("first-app/assets/Logo-b.png");
+import { useNavigation } from "@react-navigation/native";
+
+const bg = require("SmartFleet/assets/Wp.png");
+const logo = require("SmartFleet/assets/Logo-b.png");
+
 const WelcomeScreen = () => {
+  const fadeAnim = useRef(new Animated.Value(1)).current;
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    setTimeout(() => {
+      Animated.timing(fadeAnim, {
+        toValue: 0,
+        duration: 1000,
+        useNativeDriver: true,
+      }).start(() => {
+        navigation.navigate("Home");
+      });
+    }, 1000);
+  }, [fadeAnim, navigation]);
+
   return (
-    <View style={{ flex: 1 }}>
-      <ImageBackground
-        source={bg}
-        resizeMode="cover"
-        style={[
-          styles.image,
-          {
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems: "center",
-          },
-        ]}
-      >
-        <View style={{ alignItems: "center", top: 50 }}>
-          <Image source={logo} style={styles.logo} />
+    <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
+      <ImageBackground style={styles.background} source={bg}>
+        <View style={styles.logoContainer}>
+          <Image style={styles.logo} source={logo} />
         </View>
       </ImageBackground>
-    </View>
+    </Animated.View>
   );
 };
+
 const styles = StyleSheet.create({
-  logo: {
-    width: "70%",
-    height: 300,
-    resizeMode: "contain",
-    position: "absolute",
-    top: 190,
-    flexWrap: "wrap",
-  },
-  image: {
+  container: {
     flex: 1,
   },
+  background: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
+  },
+  logoContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  logo: {
+    width: 300,
+    height: 300,
+    resizeMode: "contain",
+    opacity: 0.8,
+  },
 });
+
 export default WelcomeScreen;
