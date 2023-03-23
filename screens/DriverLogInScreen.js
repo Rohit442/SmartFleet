@@ -40,7 +40,7 @@ function DriverLogInScreen() {
     <View style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
         <TextInput
-          placeholder="email"
+          placeholder="Email"
           value={email}
           onChangeText={(text) => setEmail(text)}
           style={styles.input}
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#282828",
   },
   inputContainer: {
     width: "80%",
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   button: {
-    backgroundColor: "#0782F9",
+    backgroundColor: "#29AB87",
     width: "100%",
     padding: 15,
     borderRadius: 10,

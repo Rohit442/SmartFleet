@@ -17,9 +17,9 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
     paddingVertical: 8,
-    backgroundColor: "#e6f2ff",
-    borderRadius: 4,
     marginBottom: 16,
+    backgroundColor: "#282828",
+    height: "100%",
   },
   alert: {
     flexDirection: "row",
@@ -27,13 +27,14 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderWidth: 1,
-    borderColor: "#b3d9ff",
+    borderColor: "#fff",
     borderRadius: 4,
+    backgroundColor: "#29AB87",
     marginBottom: 8,
   },
   text: {
     fontSize: 14,
-    color: "#007bff",
+    color: "#fff",
     marginLeft: 8,
   },
 });

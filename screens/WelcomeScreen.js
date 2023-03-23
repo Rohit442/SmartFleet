@@ -8,8 +8,8 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-const bg = require("SmartFleet/assets/Wp.png");
-const logo = require("SmartFleet/assets/Logo-b.png");
+const bg = require("smartfleet/assets/Wp.png");
+const logo = require("smartfleet/assets/Logo-b.png");
 
 const WelcomeScreen = () => {
   const fadeAnim = useRef(new Animated.Value(1)).current;
