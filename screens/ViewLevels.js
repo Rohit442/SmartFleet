@@ -13,10 +13,9 @@ const RealtimeData = () => {
         const dustbinsArray = Object.keys(data).map((key) => {
           return {
             name: key,
-            level: data[key].Level,
-            odor: data[key].Odor,
-            latitude: data[key].Latitude,
-            longitude: data[key].Longitude,
+            level: data[key].level,
+            odor: data[key].odor,
+            area: data[key].area,
           };
         });
         setDustbins(dustbinsArray);
@@ -38,12 +37,8 @@ const RealtimeData = () => {
             <Text style={styles.infoValue}>{dustbin.odor}</Text>
           </View>
           <View style={styles.infoContainer}>
-            <Text style={styles.infoTitle}>Lat:</Text>
-            <Text style={styles.infoValue}>{dustbin.latitude}</Text>
-          </View>
-          <View style={styles.infoContainer}>
-            <Text style={styles.infoTitle}>Long:</Text>
-            <Text style={styles.infoValue}>{dustbin.longitude}</Text>
+            <Text style={styles.infoTitle}>Area:</Text>
+            <Text style={styles.infoValue}>{dustbin.area}</Text>
           </View>
         </View>
       ))}
