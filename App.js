@@ -21,6 +21,7 @@ import CompletedTasks from "./screens/TrackWork";
 import FirebaseValueComponent from "./screens/ViewLevels";
 import AccountDetails from "./screens/AccountScreen";
 import UserReports from "./screens/UserReports";
+import Graphs from "./screens/Graphs";
 
 const Stack = createStackNavigator();
 LogBox.ignoreAllLogs();
@@ -68,6 +69,7 @@ const App = () => {
           <Stack.Screen name="Route Map" component={RouteMap} />
           <Stack.Screen name="Staff Dashboard" component={StaffDashboard} />
           <Stack.Screen name="Alerts" component={Alerts} />
+          <Stack.Screen name="Graphs" component={Graphs} />
           <Stack.Screen name="Access Details" component={DetailsScreen} />
           <Stack.Screen name="Tracking Page" component={CompletedTasks} />
           <Stack.Screen name="View Levels" component={FirebaseValueComponent} />

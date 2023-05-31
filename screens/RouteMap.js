@@ -17,12 +17,16 @@ export default function Map() {
         <Marker coordinate={{ latitude: 11.027387, longitude: 77.037847 }}>
           <Callout>
             <Text>Dustbin 1</Text>
+            <Text>Level:0</Text>
+            <Text>Odor:0</Text>
           </Callout>
         </Marker>
 
         <Marker coordinate={{ latitude: 11.02954, longitude: 77.03413 }}>
           <Callout>
             <Text>Dustbin 2</Text>
+            <Text>Level:0</Text>
+            <Text>Odor:0</Text>
           </Callout>
         </Marker>
       </MapView>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { Alert, Linking } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { Foundation } from "@expo/vector-icons";
 import {
   View,
   Text,
@@ -27,7 +28,7 @@ import { firebase } from "../firebase";
 var width = Dimensions.get("window").width;
 
 const ReportScreen = ({ navigation }) => {
-  const todoRef = firebase.firestore().collection("newData");
+  const todoRef = firebase.firestore().collection("reports");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
@@ -59,6 +60,7 @@ const ReportScreen = ({ navigation }) => {
 
           setLocation("");
           setDescription("");
+          setImage(null);
           Keyboard.dismiss();
         })
         .catch((error) => {
@@ -109,6 +111,11 @@ const ReportScreen = ({ navigation }) => {
           <Ionicons name="notifications-outline" size={24} color="white" />
         </TouchableOpacity>
       </View>
+      <View style={styles.graphs}>
+        <TouchableOpacity onPress={() => navigation.navigate("Graphs")}>
+          <Foundation name="graph-bar" size={24} color="white" />
+        </TouchableOpacity>
+      </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           onPress={() => navigation.navigate("Driver Log in")}
@@ -123,8 +130,8 @@ const ReportScreen = ({ navigation }) => {
           <Text style={styles.buttonText}>Staff Log in</Text>
         </TouchableOpacity>
       </View>
-      <Text style={styles.title}>Issues with our Fleet?</Text>
-      <Text style={styles.title}>Report here</Text>
+      <Text style={styles.title}>Drop your Issues</Text>
+      <Text style={styles.title}>here</Text>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -201,10 +208,15 @@ const styles = StyleSheet.create({
     top: 10,
     left: 10,
   },
+  graphs: {
+    position: "absolute",
+    top: 10,
+    left: 50,
+  },
   title: {
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: 10,
     color: "#fff",
   },
   inputContainer: {

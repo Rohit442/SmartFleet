@@ -2,7 +2,6 @@ import { useNavigation } from "@react-navigation/core";
 import React, { useState } from "react";
 import { Calendar, LocaleConfig } from "react-native-calendars";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { auth } from "../firebase";
 import { MaterialIcons } from "@expo/vector-icons";
 
 const DriverDashboard = ({ navigation }) => {

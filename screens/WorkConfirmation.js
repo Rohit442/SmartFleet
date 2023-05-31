@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Alert } from "react-native";
+import { firebase } from "../firebase";
 
 const WorkConfirmation = () => {
-  const [tasks, setTasks] = useState([
+  const initialTasks = [
     { id: 1, title: "Task 1", confirmed: false },
     { id: 2, title: "Task 2", confirmed: false },
     { id: 3, title: "Task 3", confirmed: false },
     { id: 4, title: "Task 4", confirmed: false },
     { id: 5, title: "Task 5", confirmed: false },
-    { id: 6, title: "Task 6", confirmed: false },
-    { id: 7, title: "Task 7", confirmed: false },
-    { id: 8, title: "Task 8", confirmed: false },
-    { id: 9, title: "Task 9", confirmed: false },
-  ]);
+  ];
+
+  const [tasks, setTasks] = useState(initialTasks);
 
   const handleConfirmation = (taskId) => {
     Alert.alert(
@@ -29,10 +28,38 @@ const WorkConfirmation = () => {
             const updatedTasks = [...tasks];
             updatedTasks[taskId - 1].confirmed = true;
             setTasks(updatedTasks);
+
+            const driverId = "Driver1"; // Replace with the actual driver ID
+            const taskKey = `Task${taskId}`;
+            firebase
+              .database()
+              .ref(`Drivers/${driverId}/${taskKey}`)
+              .set({
+                confirmed: true,
+                title: tasks[taskId - 1].title,
+              });
           },
         },
       ]
     );
+  };
+
+  const handleReset = () => {
+    Alert.alert("Confirm Reset", "Are you sure you want to reset the tasks?", [
+      {
+        text: "Cancel",
+        style: "cancel",
+      },
+      {
+        text: "Reset",
+        onPress: () => {
+          setTasks(initialTasks);
+
+          const driverId = "Driver1"; // Replace with the actual driver ID
+          firebase.database().ref(`Drivers/${driverId}`).remove();
+        },
+      },
+    ]);
   };
 
   return (
@@ -63,6 +90,9 @@ const WorkConfirmation = () => {
           </TouchableOpacity>
         </View>
       ))}
+      <TouchableOpacity style={styles.resetButton} onPress={handleReset}>
+        <Text style={styles.resetButtonText}>Reset</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -104,6 +134,18 @@ const styles = StyleSheet.create({
   },
   disabledButtonText: {
     color: "rgba(255, 255, 255, 0.5)",
+  },
+  resetButton: {
+    backgroundColor: "#fff",
+    borderRadius: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    marginTop: 16,
+    alignSelf: "center",
+  },
+  resetButtonText: {
+    color: "#282828",
+    fontWeight: "bold",
   },
 });
 
